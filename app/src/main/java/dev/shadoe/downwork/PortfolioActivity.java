@@ -16,7 +16,7 @@ import java.util.Locale;
 public class PortfolioActivity extends AppCompatActivity {
     private TextView usernameText, aboutText, ratingText;
     private EditText aboutEditText;
-    private LinearLayout skillsContainer, servicesContainer, viewMode, editMode;
+    private LinearLayout skillsContainer, servicesContainer, editButtons;
     private Button editBtn, saveBtn, cancelBtn;
     private DatabaseHelper dbHelper;
     private int profileUid;
@@ -43,8 +43,7 @@ public class PortfolioActivity extends AppCompatActivity {
         aboutEditText = findViewById(R.id.portfolio_about_edit);
         skillsContainer = findViewById(R.id.portfolio_skills_container);
         servicesContainer = findViewById(R.id.portfolio_services_container);
-        viewMode = findViewById(R.id.portfolio_view_mode);
-        editMode = findViewById(R.id.portfolio_edit_mode);
+        editButtons = findViewById(R.id.edit_buttons);
         editBtn = findViewById(R.id.edit_portfolio_btn);
         saveBtn = findViewById(R.id.save_portfolio_btn);
         cancelBtn = findViewById(R.id.cancel_portfolio_btn);
@@ -63,8 +62,6 @@ public class PortfolioActivity extends AppCompatActivity {
 
     private void loadPortfolio() {
         // Load user info
-        final DatabaseHelper.User user = dbHelper.signInUser("temp@temp.com", "temp"); // We need a better way
-        // For now, let's query directly
         final List<DatabaseHelper.Professional> allProfs = dbHelper.getAllProfessionals();
         DatabaseHelper.Professional prof = null;
         for (DatabaseHelper.Professional p : allProfs) {
@@ -94,43 +91,64 @@ public class PortfolioActivity extends AppCompatActivity {
         // Load skills
         skillsContainer.removeAllViews();
         final List<String> skills = dbHelper.getSkills(profileUid);
-        for (String skill : skills) {
-            final TextView skillView = new TextView(this);
-            skillView.setText("• " + skill);
-            skillView.setTextSize(16);
-            skillView.setPadding(0, 8, 0, 8);
-            skillsContainer.addView(skillView);
+        if (skills.isEmpty()) {
+            final TextView emptyView = new TextView(this);
+            emptyView.setText("No skills listed");
+            emptyView.setTextColor(0xFF757575);
+            emptyView.setPadding(16, 16, 16, 16);
+            skillsContainer.addView(emptyView);
+        } else {
+            for (String skill : skills) {
+                final TextView skillView = new TextView(this);
+                skillView.setText("• " + skill);
+                skillView.setTextSize(16);
+                skillView.setTextColor(0xFF424242);
+                skillView.setPadding(16, 12, 16, 12);
+                skillsContainer.addView(skillView);
+            }
         }
 
         // Load services
         servicesContainer.removeAllViews();
         final List<DatabaseHelper.Service> services = dbHelper.getServices(profileUid);
-        for (DatabaseHelper.Service service : services) {
-            final View serviceCard = getLayoutInflater().inflate(
-                    R.layout.item_service,
-                    servicesContainer,
-                    false
-            );
-            final TextView nameText = serviceCard.findViewById(R.id.service_name);
-            final TextView descText = serviceCard.findViewById(R.id.service_desc);
-            final TextView rateText = serviceCard.findViewById(R.id.service_rate);
+        if (services.isEmpty()) {
+            final TextView emptyView = new TextView(this);
+            emptyView.setText("No services listed");
+            emptyView.setTextColor(0xFF757575);
+            emptyView.setPadding(16, 16, 16, 16);
+            servicesContainer.addView(emptyView);
+        } else {
+            for (DatabaseHelper.Service service : services) {
+                final View serviceCard = getLayoutInflater().inflate(
+                        R.layout.item_service,
+                        servicesContainer,
+                        false
+                );
+                final TextView nameText = serviceCard.findViewById(R.id.service_name);
+                final TextView descText = serviceCard.findViewById(R.id.service_desc);
+                final TextView rateText = serviceCard.findViewById(R.id.service_rate);
 
-            nameText.setText(service.name);
-            descText.setText(service.description);
-            rateText.setText(String.format(Locale.getDefault(), "$%.2f/hr", service.rate));
+                nameText.setText(service.name);
+                descText.setText(service.description);
+                rateText.setText(String.format(Locale.getDefault(), "$%.2f/hr", service.rate));
 
-            servicesContainer.addView(serviceCard);
+                servicesContainer.addView(serviceCard);
+            }
         }
     }
 
     private void enterEditMode() {
-        viewMode.setVisibility(View.GONE);
-        editMode.setVisibility(View.VISIBLE);
+        aboutText.setVisibility(View.GONE);
+        aboutEditText.setVisibility(View.VISIBLE);
+        editButtons.setVisibility(View.VISIBLE);
+        editBtn.setVisibility(View.GONE);
     }
 
     private void exitEditMode() {
-        viewMode.setVisibility(View.VISIBLE);
-        editMode.setVisibility(View.GONE);
+        aboutText.setVisibility(View.VISIBLE);
+        aboutEditText.setVisibility(View.GONE);
+        editButtons.setVisibility(View.GONE);
+        editBtn.setVisibility(View.VISIBLE);
     }
 
     private void savePortfolio() {

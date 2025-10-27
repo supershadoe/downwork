@@ -9,196 +9,257 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="24dp">
+        android:paddingBottom="32dp">
 
-        <TextView
-            android:id="@+id/portfolio_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/portfolio_title"
-            android:textColor="@android:color/black"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/edit_portfolio_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/edit_portfolio"
-            android:textSize="12sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/portfolio_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/portfolio_title" />
-
-        <TextView
-            android:id="@+id/portfolio_username"
+        <!-- Header Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/portfolio_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="48dp"
-            android:text="Username"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/portfolio_rating"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_title" />
-
-        <TextView
-            android:id="@+id/portfolio_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:text="★ 0/5"
-            android:textColor="#F57C00"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/portfolio_username"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/portfolio_username" />
-
-        <!-- View Mode -->
-        <LinearLayout
-            android:id="@+id/portfolio_view_mode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="48dp"
-            android:orientation="vertical"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/primary_container"
+            android:elevation="4dp"
+            android:padding="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_username">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/portfolio_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="@android:color/black"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/portfolio_rating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/portfolio_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about_me"
-                android:textColor="@android:color/primary_text_light"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:text="★ 0/5"
+                android:textColor="#F57C00"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/portfolio_username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/portfolio_username" />
 
-            <TextView
-                android:id="@+id/portfolio_about"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="No bio added yet"
-                android:textColor="@android:color/primary_text_light" />
-        </LinearLayout>
-
-        <!-- Edit Mode -->
-        <LinearLayout
-            android:id="@+id/portfolio_edit_mode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="48dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_username">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/about_me"
-                android:textColor="@android:color/primary_text_light"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/portfolio_about_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:autofillHints=""
-                android:gravity="top"
-                android:hint="Tell others about yourself"
-                android:inputType="textMultiLine"
-                android:lines="5"
-                android:minHeight="120dp"
-                android:textColor="@android:color/primary_text_light"
-                android:textColorHint="#1B5E20" />
-
-            <LinearLayout
+            <Button
+                android:id="@+id/edit_portfolio_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:background="@drawable/button_rounded"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/edit_portfolio"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/portfolio_username" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- About Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/about_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/primary_container"
+            android:elevation="4dp"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/portfolio_header">
+
+            <TextView
+                android:id="@+id/about_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_me"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/about_divider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/lemongrass"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_title" />
+
+            <TextView
+                android:id="@+id/portfolio_about"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="4dp"
+                android:text="No bio added yet"
+                android:textColor="@android:color/primary_text_light"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_divider" />
+
+            <EditText
+                android:id="@+id/portfolio_about_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints=""
+                android:background="@android:color/white"
+                android:gravity="top"
+                android:hint="Tell others about yourself..."
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:minHeight="120dp"
+                android:padding="12dp"
+                android:textColor="@android:color/primary_text_light"
+                android:textColorHint="#1B5E20"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_divider" />
+
+            <LinearLayout
+                android:id="@+id/edit_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/portfolio_about_edit">
 
                 <Button
                     android:id="@+id/save_portfolio_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/save" />
+                    android:background="@drawable/button_rounded"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:text="@string/save"
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/cancel_portfolio_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@string/cancel" />
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/button_rounded_outline"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:text="@string/cancel"
+                    android:textSize="14sp" />
             </LinearLayout>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/skills_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/my_skills"
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_view_mode" />
-
-        <LinearLayout
-            android:id="@+id/portfolio_skills_container"
+        <!-- Skills Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/skills_section"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="48dp"
-            android:orientation="vertical"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/primary_container"
+            android:elevation="4dp"
+            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skills_title" />
+            app:layout_constraintTop_toBottomOf="@+id/about_section">
 
-        <TextView
-            android:id="@+id/services_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/my_services"
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_skills_container" />
+            <TextView
+                android:id="@+id/skills_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_skills"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/portfolio_services_container"
+            <View
+                android:id="@+id/skills_divider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/lemongrass"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/skills_title" />
+
+            <LinearLayout
+                android:id="@+id/portfolio_skills_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/skills_divider" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Services Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/services_section"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="48dp"
-            android:orientation="vertical"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/primary_container"
+            android:elevation="4dp"
+            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/services_title" />
+            app:layout_constraintTop_toBottomOf="@+id/skills_section">
+
+            <TextView
+                android:id="@+id/services_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_services"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/services_divider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/lemongrass"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/services_title" />
+
+            <LinearLayout
+                android:id="@+id/portfolio_services_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/services_divider" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
