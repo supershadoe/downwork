@@ -1,4 +1,4 @@
-package dev.shadoe.downwork;
+package dev.shadoe.downwork.portfolio;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +14,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+
+import dev.shadoe.downwork.Constants;
+import dev.shadoe.downwork.DatabaseHelper;
+import dev.shadoe.downwork.DownworkApp;
+import dev.shadoe.downwork.MainActivity;
+import dev.shadoe.downwork.R;
 
 public class HomeActivity extends AppCompatActivity {
 

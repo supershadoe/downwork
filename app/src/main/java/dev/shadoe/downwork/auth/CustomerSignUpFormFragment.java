@@ -1,4 +1,4 @@
-package dev.shadoe.downwork;
+package dev.shadoe.downwork.auth;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,8 +13,14 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-public class ProfessionalSignUpFormFragment extends Fragment {
-    private EditText nameInput, emailInput, passwordInput, confirmPasswordInput, skillsInput;
+import dev.shadoe.downwork.Constants;
+import dev.shadoe.downwork.DatabaseHelper;
+import dev.shadoe.downwork.DownworkApp;
+import dev.shadoe.downwork.portfolio.HomeActivity;
+import dev.shadoe.downwork.R;
+
+public class CustomerSignUpFormFragment extends Fragment {
+    private EditText nameInput, emailInput, passwordInput, confirmPasswordInput;
     private TextView errorText;
     private DatabaseHelper dbHelper;
 
@@ -25,7 +31,7 @@ public class ProfessionalSignUpFormFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         return inflater.inflate(
-                R.layout.fragment_professional_sign_up_form,
+                R.layout.fragment_customer_sign_up_form,
                 container,
                 false
         );
@@ -39,14 +45,13 @@ public class ProfessionalSignUpFormFragment extends Fragment {
         final DownworkApp app = (DownworkApp) activity.getApplicationContext();
         dbHelper = app.getDbHelper();
 
-        nameInput = view.findViewById(R.id.prof_name);
-        emailInput = view.findViewById(R.id.prof_mail);
-        passwordInput = view.findViewById(R.id.prof_pwd);
-        confirmPasswordInput = view.findViewById(R.id.prof_confirm_pwd);
-        skillsInput = view.findViewById(R.id.prof_skills);
-        errorText = view.findViewById(R.id.prof_error);
+        nameInput = view.findViewById(R.id.customer_name);
+        emailInput = view.findViewById(R.id.customer_mail);
+        passwordInput = view.findViewById(R.id.customer_pwd);
+        confirmPasswordInput = view.findViewById(R.id.customer_confirm_pwd);
+        errorText = view.findViewById(R.id.customer_error);
 
-        final Button signUpBtn = view.findViewById(R.id.prof_signup_btn);
+        final Button signUpBtn = view.findViewById(R.id.customer_signup_btn);
         signUpBtn.setOnClickListener(v -> handleSignUp());
     }
 
@@ -55,7 +60,6 @@ public class ProfessionalSignUpFormFragment extends Fragment {
         final String email = emailInput.getText().toString();
         final String password = passwordInput.getText().toString();
         final String confirmPassword = confirmPasswordInput.getText().toString();
-        final String skillsText = skillsInput.getText().toString();
 
         // Validate inputs
         if (!dbHelper.isValidUsername(name)) {
@@ -83,28 +87,15 @@ public class ProfessionalSignUpFormFragment extends Fragment {
             return;
         }
 
-        if (skillsText.trim().isEmpty()) {
-            showError("Please enter at least one skill");
-            return;
-        }
-
         // Sign up the user
         final int uid = dbHelper.signUpUser(
                 email,
                 password,
                 name,
-                DatabaseHelper.USER_TYPE_PROFESSIONAL
+                DatabaseHelper.USER_TYPE_CUSTOMER
         );
 
         if (uid != -1) {
-            // Add skills (comma-separated)
-            final String[] skills = skillsText.split(",");
-            for (String skill : skills) {
-                if (!skill.trim().isEmpty()) {
-                    dbHelper.addSkill(uid, skill.trim());
-                }
-            }
-
             // Save login state
             final FragmentActivity activity = getActivity();
             if (activity != null) {
@@ -112,7 +103,7 @@ public class ProfessionalSignUpFormFragment extends Fragment {
                 final SharedPreferences prefs = app.getPrefs();
                 prefs.edit()
                         .putInt(Constants.prefs_logged_in_user, uid)
-                        .putInt(Constants.prefs_user_type, DatabaseHelper.USER_TYPE_PROFESSIONAL)
+                        .putInt(Constants.prefs_user_type, DatabaseHelper.USER_TYPE_CUSTOMER)
                         .apply();
 
                 // Navigate to home

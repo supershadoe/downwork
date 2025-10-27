@@ -1,7 +1,6 @@
-package dev.shadoe.downwork;
+package dev.shadoe.downwork.auth;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Objects;
+
+import dev.shadoe.downwork.R;
 
 public class AuthenticationActivity extends AppCompatActivity {
     @Override

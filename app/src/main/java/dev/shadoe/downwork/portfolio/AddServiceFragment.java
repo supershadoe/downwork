@@ -1,4 +1,4 @@
-package dev.shadoe.downwork;
+package dev.shadoe.downwork.portfolio;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+
+import dev.shadoe.downwork.Constants;
+import dev.shadoe.downwork.DatabaseHelper;
+import dev.shadoe.downwork.DownworkApp;
+import dev.shadoe.downwork.R;
 
 public class AddServiceFragment extends Fragment {
     private EditText serviceNameInput, serviceDescInput, rateInput;

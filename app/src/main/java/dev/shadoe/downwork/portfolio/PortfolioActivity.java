@@ -1,4 +1,4 @@
-package dev.shadoe.downwork;
+package dev.shadoe.downwork.portfolio;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +19,11 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+
+import dev.shadoe.downwork.Constants;
+import dev.shadoe.downwork.DatabaseHelper;
+import dev.shadoe.downwork.DownworkApp;
+import dev.shadoe.downwork.R;
 
 public class PortfolioActivity extends AppCompatActivity {
     private TextView aboutText;

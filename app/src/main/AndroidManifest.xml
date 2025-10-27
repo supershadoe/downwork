@@ -14,13 +14,13 @@
         android:theme="@style/Theme.Downwork"
         tools:targetApi="31">
         <activity
-            android:name=".AuthenticationActivity"
+            android:name=".auth.AuthenticationActivity"
             android:exported="false" />
         <activity
-            android:name=".PortfolioActivity"
+            android:name=".portfolio.PortfolioActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".portfolio.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

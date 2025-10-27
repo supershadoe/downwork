@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import dev.shadoe.downwork.auth.AuthenticationActivity;
+import dev.shadoe.downwork.portfolio.HomeActivity;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

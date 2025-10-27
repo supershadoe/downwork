@@ -1,4 +1,4 @@
-package dev.shadoe.downwork;
+package dev.shadoe.downwork.auth;
 
 import android.os.Bundle;
 import android.text.Spannable;
@@ -17,6 +17,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+
+import dev.shadoe.downwork.R;
 
 public class SignUpFragment extends Fragment {
     @Override

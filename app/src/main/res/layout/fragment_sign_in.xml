@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lemongrass_light"
-    tools:context=".OnboardingFragment">
+    tools:context=".auth.OnboardingFragment">
 
     <TextView
         android:id="@+id/sign_in_title"
