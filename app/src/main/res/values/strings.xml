@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">downwork</string>
+    <string name="downwork_logo">Downwork logo</string>
+    <string name="downwork_name">downwork.</string>
+    <string name="downwork_tagline"><![CDATA[fair & easy\nfreelancing.]]></string>
+    <string name="enter">Enter</string>
+
+    <!-- Sign Up -->
+    <string name="sign_up_title">sign up</string>
+    <string name="sign_up_desc">to access our services</string>
+    <string name="sign_in_prompt">Already a user? Sign in!</string>
+    <string name="sign_in_prompt_btn">Sign in!</string>
+    <string name="customer_logo">Customer logo</string>
+    <string name="customer">Customer</string>
+    <string name="to_avail_services">to avail services</string>
+    <string name="prof_logo">Professional logo</string>
+    <string name="professional">Professional</string>
+    <string name="to_offer_services">to offer services</string>
+
+    <!-- Sign In -->
+    <string name="sign_in_title">sign in</string>
+    <string name="sign_in_desc">to get amazed!</string>
+    <string name="mail_id_hint">john@example.com</string>
+    <string name="mail_id">Mail ID</string>
+    <string name="password_hint">password</string>
+    <string name="password">Password</string>
+    <string name="sign_in_btn">Sign in</string>
+
+    <!-- Customer Sign Up -->
+    <string name="customer_signup_title">join as customer</string>
+    <string name="customer_signup_desc">Start hiring talented professionals</string>
+    <string name="full_name">Full Name</string>
+    <string name="full_name_hint">John Doe</string>
+    <string name="password_hint_min">min. 6 characters</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password_hint">re-enter password</string>
+    <string name="sign_up_btn">Sign Up</string>
+
+    <!-- Professional Sign Up -->
+    <string name="prof_signup_title">join as pro</string>
+    <string name="prof_signup_desc">Start offering your services</string>
+    <string name="skills">Skills</string>
+    <string name="skills_hint">Enter your skills separated by commas</string>
+    <string name="skills_example">e.g., Web Design, Logo Design, Writing</string>
+
+    <!-- Home -->
+    <string name="home_title">home</string>
+    <string name="browse_services">Browse Services</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="my_services">My Services</string>
+    <string name="my_portfolio">My Portfolio</string>
+    <string name="logout">Logout</string>
+    <string name="welcome_back">Welcome back,</string>
+    <string name="no_services_yet">No services available yet</string>
+    <string name="add_service">Add Service</string>
+
+    <!-- Portfolio -->
+    <string name="portfolio_title">portfolio</string>
+    <string name="about_me">About Me</string>
+    <string name="my_skills">My Skills</string>
+    <string name="edit_portfolio">Edit Portfolio</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Services -->
+    <string name="service_name">Service Name</string>
+    <string name="service_description">Service Description</string>
+    <string name="rate_per_hour">Rate (per hour)</string>
+    <string name="add_service_title">Add Service</string>
+    <string name="service_name_hint">e.g., Logo Design</string>
+    <string name="service_desc_hint">Describe what you offer</string>
+    <string name="rate_hint">$</string>
+
+    <!-- Professional List -->
+    <string name="all_professionals">All Professionals</string>
+    <string name="no_professionals">No professionals found</string>
+    <string name="rating">Rating:</string>
+    <string name="view_profile">View Profile</string>
+</resources>

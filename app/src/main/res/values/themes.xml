@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Downwork" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/lemongrass_light</item>
+        <item name="colorPrimaryDark">@color/lemongrass</item>
+        <item name="colorAccent">@color/lemongrass_lighter</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/lemongrass_light</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.Downwork.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/lemongrass_light</item>
+        <item name="colorPrimaryDark">@color/lemongrass</item>
+        <item name="colorAccent">@color/lemongrass_lighter</item>
+        <item name="android:windowBackground">@color/lemongrass_light</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/lemongrass_light</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
