@@ -4,12 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lemongrass_light"
+    android:id="@+id/portfolio_act"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="32dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/portfolio_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lemongrass_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Header Section -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,31 +34,7 @@
             android:padding="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/portfolio_username"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Username"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/portfolio_rating"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/portfolio_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="★ 0/5"
-                android:textColor="#F57C00"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/portfolio_username"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/portfolio_username" />
+            app:layout_constraintTop_toBottomOf="@+id/portfolio_toolbar">
 
             <Button
                 android:id="@+id/edit_portfolio_btn"

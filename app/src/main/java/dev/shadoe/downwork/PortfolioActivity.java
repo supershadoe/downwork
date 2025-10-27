@@ -2,19 +2,26 @@ package dev.shadoe.downwork;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class PortfolioActivity extends AppCompatActivity {
-    private TextView usernameText, aboutText, ratingText;
+    private TextView aboutText;
     private EditText aboutEditText;
     private LinearLayout skillsContainer, servicesContainer, editButtons;
     private Button editBtn, saveBtn, cancelBtn;
@@ -28,6 +35,17 @@ public class PortfolioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portfolio);
 
+        Toolbar toolbar = findViewById(R.id.portfolio_toolbar);
+        setSupportActionBar(toolbar);
+        View root = findViewById(R.id.portfolio_act);
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
+            root.setPadding(0, insets.top, 0, insets.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
+        Objects.requireNonNull(getSupportActionBar())
+                .setDisplayHomeAsUpEnabled(true);
+
         final DownworkApp app = (DownworkApp) getApplicationContext();
         dbHelper = app.getDbHelper();
 
@@ -37,9 +55,7 @@ public class PortfolioActivity extends AppCompatActivity {
         profileUid = getIntent().getIntExtra("uid", -1);
         isOwnProfile = (profileUid == currentUserId);
 
-        usernameText = findViewById(R.id.portfolio_username);
         aboutText = findViewById(R.id.portfolio_about);
-        ratingText = findViewById(R.id.portfolio_rating);
         aboutEditText = findViewById(R.id.portfolio_about_edit);
         skillsContainer = findViewById(R.id.portfolio_skills_container);
         servicesContainer = findViewById(R.id.portfolio_services_container);
@@ -76,8 +92,9 @@ public class PortfolioActivity extends AppCompatActivity {
             return;
         }
 
-        usernameText.setText(prof.username);
-        ratingText.setText(String.format(Locale.getDefault(), "★ %d/5", prof.rating));
+        ActionBar actionBar = Objects.requireNonNull(getSupportActionBar());
+        actionBar.setTitle(prof.username);
+        actionBar.setSubtitle(String.format(Locale.getDefault(), "★ %d/5", prof.rating));
 
         final DatabaseHelper.Portfolio portfolio = dbHelper.getPortfolio(profileUid);
         if (portfolio != null && !portfolio.about.isEmpty()) {
@@ -156,5 +173,14 @@ public class PortfolioActivity extends AppCompatActivity {
         dbHelper.updatePortfolio(profileUid, about);
         aboutText.setText(about.isEmpty() ? "No bio added yet" : about);
         exitEditMode();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getOnBackPressedDispatcher().onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
