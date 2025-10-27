@@ -13,9 +13,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/primary_container"
-        android:elevation="6dp"
-        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,26 +21,12 @@
             android:id="@+id/home_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/home_title"
             android:textColor="@android:color/black"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/logout_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/logout_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_rounded_outline"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/logout"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/home_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/home_title" />
 
         <TextView
             android:id="@+id/subtitle"

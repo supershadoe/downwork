@@ -1,18 +1,19 @@
 package dev.shadoe.downwork;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -45,5 +46,26 @@ public class HomeActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.home_fragment_container, fragment)
                 .commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.logout_menu_btn) {
+            final DownworkApp app = (DownworkApp) getApplicationContext();
+            app.getPrefs().edit()
+                    .remove(Constants.prefs_logged_in_user)
+                    .remove(Constants.prefs_user_type)
+                    .apply();
+
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

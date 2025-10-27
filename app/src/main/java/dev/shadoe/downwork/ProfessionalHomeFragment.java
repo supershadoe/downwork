@@ -19,6 +19,7 @@ import java.util.Locale;
 public class ProfessionalHomeFragment extends Fragment {
     private LinearLayout servicesContainer;
     private DatabaseHelper dbHelper;
+    private TextView homeTitle;
     private int currentUserId;
 
     @Override
@@ -63,9 +64,8 @@ public class ProfessionalHomeFragment extends Fragment {
             startActivity(intent);
         });
 
-        final Button logoutBtn = view.findViewById(R.id.logout_btn);
-        logoutBtn.setOnClickListener(v -> handleLogout());
-
+        homeTitle = view.findViewById(R.id.home_title);
+        setUserGreeting(currentUserId);
         loadServices();
     }
 
@@ -73,6 +73,19 @@ public class ProfessionalHomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         loadServices();
+    }
+
+    private void setUserGreeting(int currentUserId) {
+        final List<DatabaseHelper.Professional> allProfs = dbHelper.getAllProfessionals();
+        DatabaseHelper.Professional prof = null;
+        for (DatabaseHelper.Professional p : allProfs) {
+            if (p.uid == currentUserId) {
+                prof = p;
+                break;
+            }
+        }
+        assert prof != null;
+        homeTitle.setText("Hi, " + prof.username + "!");
     }
 
     private void loadServices() {
@@ -107,19 +120,5 @@ public class ProfessionalHomeFragment extends Fragment {
         rateText.setText(String.format(Locale.getDefault(), "$%.2f/hr", service.rate));
 
         return card;
-    }
-
-    private void handleLogout() {
-        final FragmentActivity activity = getActivity();
-        if (activity != null) {
-            final DownworkApp app = (DownworkApp) activity.getApplicationContext();
-            app.getPrefs().edit()
-                    .remove(Constants.prefs_logged_in_user)
-                    .remove(Constants.prefs_user_type)
-                    .apply();
-
-            startActivity(new Intent(activity, MainActivity.class));
-            activity.finish();
-        }
     }
 }

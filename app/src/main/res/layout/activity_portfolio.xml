@@ -22,34 +22,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Header Section -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/portfolio_header"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/edit_portfolio_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/primary_container"
-            android:elevation="4dp"
-            android:padding="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_rounded"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/edit_portfolio"
+            android:textSize="14sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_toolbar">
-
-            <Button
-                android:id="@+id/edit_portfolio_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_rounded"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp"
-                android:text="@string/edit_portfolio"
-                android:textSize="14sp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/portfolio_username" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/portfolio_toolbar" />
 
         <!-- About Section -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +50,7 @@
             android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/portfolio_header">
+            app:layout_constraintTop_toBottomOf="@+id/edit_portfolio_btn">
 
             <TextView
                 android:id="@+id/about_title"

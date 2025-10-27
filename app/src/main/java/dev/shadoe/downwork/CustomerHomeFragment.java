@@ -47,9 +47,6 @@ public class CustomerHomeFragment extends Fragment {
 
         professionalsContainer = view.findViewById(R.id.professionals_container);
 
-        final Button logoutBtn = view.findViewById(R.id.logout_btn);
-        logoutBtn.setOnClickListener(v -> handleLogout());
-
         loadProfessionals();
     }
 
@@ -98,19 +95,5 @@ public class CustomerHomeFragment extends Fragment {
         });
 
         return card;
-    }
-
-    private void handleLogout() {
-        final FragmentActivity activity = getActivity();
-        if (activity != null) {
-            final DownworkApp app = (DownworkApp) activity.getApplicationContext();
-            app.getPrefs().edit()
-                    .remove(Constants.prefs_logged_in_user)
-                    .remove(Constants.prefs_user_type)
-                    .apply();
-
-            startActivity(new Intent(activity, MainActivity.class));
-            activity.finish();
-        }
     }
 }
