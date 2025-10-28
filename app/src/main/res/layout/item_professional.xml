@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="@color/lemongrass_lighter"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@android:color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="#F0F0F0"
+            android:background="@color/lemongrass_light"
             android:padding="8dp"
             android:textColor="@android:color/black"
             android:textSize="14sp"
