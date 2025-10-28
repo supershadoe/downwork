@@ -152,7 +152,7 @@ public class PortfolioActivity extends AppCompatActivity {
 
                 nameText.setText(service.name);
                 descText.setText(service.description);
-                rateText.setText(String.format(Locale.getDefault(), "$%.2f/hr", service.rate));
+                rateText.setText(String.format(Locale.getDefault(), "₹%.2f/hr", service.rate));
 
                 servicesContainer.addView(serviceCard);
             }

@@ -69,7 +69,7 @@
     <string name="add_service_title">Add Service</string>
     <string name="service_name_hint">e.g., Logo Design</string>
     <string name="service_desc_hint">Describe what you offer</string>
-    <string name="rate_hint">$</string>
+    <string name="rate_hint">₹</string>
 
     <!-- Professional List -->
     <string name="all_professionals">All Professionals</string>

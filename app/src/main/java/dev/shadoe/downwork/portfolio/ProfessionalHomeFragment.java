@@ -122,7 +122,7 @@ public class ProfessionalHomeFragment extends Fragment {
 
         nameText.setText(service.name);
         descText.setText(service.description);
-        rateText.setText(String.format(Locale.getDefault(), "$%.2f/hr", service.rate));
+        rateText.setText(String.format(Locale.getDefault(), "₹%.2f/hr", service.rate));
 
         return card;
     }

@@ -151,7 +151,7 @@ public class CustomerHomeFragment extends Fragment {
                         matchingServices.append("\n");
                     }
                     matchingServices.append(String.format(Locale.getDefault(),
-                            "• %s - $%.2f/hr", service.name, service.rate));
+                            "• %s - ₹%.2f/hr", service.name, service.rate));
                 }
             }
 
