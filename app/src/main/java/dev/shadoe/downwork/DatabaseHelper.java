@@ -172,6 +172,45 @@ public class DatabaseHelper {
         return services;
     }
 
+    // Fuzzy search for professionals by keyword (searches in username and service names)
+    public List<Professional> searchProfessionals(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return getAllProfessionals();
+        }
+
+        List<Professional> professionals = new ArrayList<>();
+        String searchPattern = "%" + keyword.trim() + "%";
+
+        Cursor cursor = db.rawQuery(
+                "SELECT DISTINCT u.uid, u.user_name, p.about, p.star_rating " +
+                        "FROM Users u " +
+                        "LEFT JOIN Portfolio p ON u.uid = p.uid " +
+                        "LEFT JOIN Services s ON u.uid = s.uid " +
+                        "WHERE u.user_type = ? AND (" +
+                        "u.user_name LIKE ? OR s.service_name LIKE ?)",
+                new String[]{
+                        String.valueOf(USER_TYPE_PROFESSIONAL),
+                        searchPattern,
+                        searchPattern
+                }
+        );
+
+        while (cursor.moveToNext()) {
+            int uid = cursor.getInt(0);
+            Professional prof = new Professional(
+                    uid,
+                    cursor.getString(1),
+                    cursor.getString(2) != null ? cursor.getString(2) : "",
+                    cursor.getInt(3),
+                    getSkills(uid),
+                    getServices(uid)
+            );
+            professionals.add(prof);
+        }
+        cursor.close();
+        return professionals;
+    }
+
     // Get all professionals with their services
     public List<Professional> getAllProfessionals() {
         List<Professional> professionals = new ArrayList<>();
