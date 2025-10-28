@@ -4,7 +4,7 @@ This is a toy project that uses Android views for freelancing purposes. It
 supports the following features:
 
 - Freelancers: add, edit, delete services and update profile.
-- Customers: view freelancer portfolios.
+- Customers: view freelancer portfolios, search and compare prices for services.
 
 The app uses SHA256 hashes to store passwords and runs on a SQLite database
 which can be changed to a full fledged database in the future.
